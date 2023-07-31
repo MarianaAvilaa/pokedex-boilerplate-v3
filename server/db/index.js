@@ -6,7 +6,7 @@ trainer - not empty or null
 date - not empty or null
 imageUrl - with a default value */
 // require each of your models
-const Pokemon= db.define("pokemon",{
+const Pokemon= db.define("Pokemon",{
   name:{
     type: Sequelize.STRING,
     allowNull: false,
@@ -22,14 +22,10 @@ const Pokemon= db.define("pokemon",{
     type:Sequelize.STRING,
     allowNull:false,
   },
-  date:{
-    type: Sequelize.Date,
-    allowNull: false,
-
-  },
+  
   imageURL:{
     type:Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 
 });
@@ -41,7 +37,7 @@ imageUrl - with a default value
 Pokemon may be associated with at most one trainer
 Likewise, trainers may be associated with many pokemon */
 
-const Trainer=db.define("trainer",{
+const Trainer=db.define("Trainer",{
 firstName:{
   type:Sequelize.STRING,
   allowNull:false,
@@ -56,12 +52,12 @@ allowNull:false,
 },
 imageURL:{
 type:Sequelize.STRING,
-allowNull:false,
+allowNull:true,
 },
-})
+});
 
 // place your associations here!
-Pokemon.hasOne(Trainer);
+Pokemon.belongsTo(Trainer);
 Trainer.hasMany(Pokemon);
 // export your models below
 

@@ -1,11 +1,12 @@
 const router = require("express").Router();
-const { ConnectionRefusedError } = require("sequelize");
-const { db,Pokemon,Trainer } = require("../db");
+
+const { db,Pokemon,Trainer } = require("../db/db");
 
 // Connect your API routes here!
 router.get("/pokemons",async(req,res,next) => {
     try{
         const Pokemons= await Pokemon.findAll();
+        console.log(Pokemons);
         res.send(Pokemons);
     }catch(err){
         next(err);
@@ -45,7 +46,7 @@ router.get("/trainers/:id",async(req,res,next)=>{
         });
 
 // Route to add a new Pokemon
-router.post("/pokemon",async (req,res) => {
+router.post("/pokemons",async (req,res) => {
     const pokemon = await Pokemon.create(req.body);
     res.json(pokemon);
 });
