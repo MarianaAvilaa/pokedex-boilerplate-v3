@@ -5,7 +5,7 @@ const Main = () => {
   return (
     <div id="main">
       <h1>Pokedex</h1>
-      {/* <Pokemons /> */}
+      { <Pokemons /> }
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function Pokemons() {
   const [pokemons, setPokemons]= useState([]);
@@ -11,14 +12,15 @@ export default function Pokemons() {
                        
     }
     fetchPokemons();
-  })
+  },[])
   return (
     <div>
       <h1>PokemonList</h1>
       <ul>
-        {pokemons.map((pokemon)=>{
-          {console.log(pokemon)}
-        })
+        {pokemons.map((pokemon)=>(
+        <p>{pokemon.name}, {pokemon.type}</p> 
+         
+        ))
           
           }
       </ul>
